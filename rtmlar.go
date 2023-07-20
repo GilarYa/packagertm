@@ -16,13 +16,13 @@ func InsertOneDoc(db *mongo.Database, collection string, doc interface{}) (inser
 	return insertResult.InsertedID
 }
 
-func InsertDataCS(db *mongo.Database, nama, email, nohp string, negara string, desc string) (InsertedID interface{}) {
+func InsertDataCS(db *mongo.Database, namacs, emailcs, nohpcs string, negaracs string, desccs string) (InsertedID interface{}) {
 	var dataCS DataCS
-	dataCS.Nama = nama
-	dataCS.Email = email
-	dataCS.Nohp = nohp
-	dataCS.Negara = negara
-	dataCS.Desc = desc
+	dataCS.Namacs = namacs
+	dataCS.Emailcs = emailcs
+	dataCS.Nohpcs = nohpcs
+	dataCS.Negaracs = negaracs
+	dataCS.Desccs = desccs
 	return InsertOneDoc(db, "data_DataCS", dataCS)
 }
 
@@ -35,21 +35,21 @@ func InsertDataCS(db *mongo.Database, nama, email, nohp string, negara string, d
 //		}
 //		return data
 //	}
-func GetDataNama(nama string, db *mongo.Database, col string) (data DataCS) {
+func GetDataNamacs(namacs string, db *mongo.Database, col string) (data DataCS) {
 	accou := db.Collection(col)
-	filter := bson.M{"nama": nama}
+	filter := bson.M{"namacs": namacs}
 	err := accou.FindOne(context.TODO(), filter).Decode(&data)
 	if err != nil {
-		fmt.Printf("getNama: %v\n", err)
+		fmt.Printf("getNamacs: %v\n", err)
 	}
 	return data
 }
-func GetDataNegara(negara string, db *mongo.Database, col string) (data DataCS) {
+func GetDataNegaracs(negaracs string, db *mongo.Database, col string) (data DataCS) {
 	agd := db.Collection(col)
-	filter := bson.M{"negara": negara}
+	filter := bson.M{"negaracs": negaracs}
 	err := agd.FindOne(context.TODO(), filter).Decode(&data)
 	if err != nil {
-		fmt.Printf("getdatanegara: %v\n", err)
+		fmt.Printf("getdatanegaracs: %v\n", err)
 	}
 	return data
 }
@@ -65,9 +65,9 @@ func GetDataNegara(negara string, db *mongo.Database, col string) (data DataCS) 
 // 	return data
 // }
 
-func DeleteDataNama(nama string, db *mongo.Database, col string) (data DataCS) {
+func DeleteDataNamacs(namacs string, db *mongo.Database, col string) (data DataCS) {
 	dena := db.Collection(col)
-	filter := bson.M{"nama": nama}
+	filter := bson.M{"namacs": namacs}
 	err, _ := dena.DeleteOne(context.TODO(), filter)
 	if err != nil {
 		fmt.Printf("DeleteDataNama : %v\n", err)
@@ -76,9 +76,9 @@ func DeleteDataNama(nama string, db *mongo.Database, col string) (data DataCS) {
 	return data
 
 }
-func DeleteDataNegara(negara string, db *mongo.Database, col string) (data DataCS) {
+func DeleteDataNegaracs(negaracs string, db *mongo.Database, col string) (data DataCS) {
 	dena := db.Collection(col)
-	filter := bson.M{"negara": negara}
+	filter := bson.M{"negaracs": negaracs}
 	err, _ := dena.DeleteOne(context.TODO(), filter)
 	if err != nil {
 		fmt.Printf("DeleteDatanegara : %v\n", err)

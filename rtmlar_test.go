@@ -18,26 +18,26 @@ var MongoInfo = atdb.DBInfo{
 var MongoConn = atdb.MongoConnect(MongoInfo)
 
 func TestInsertData(t *testing.T) {
-	Nama := "Gilar"
-	Email := "gilarya@gmail.com"
-	Nohp := "085312345678"
-	Negara := "Indonesia"
-	Desc := "Ada yang bisa di bantu?"
-	hasil := InsertDataCS(MongoConn, Nama, Email, Nohp, Negara, Desc)
+	Namacs := "Gilar"
+	Emailcs := "gilarya@gmail.com"
+	Nohpcs := "085312345678"
+	Negaracs := "Indonesia"
+	Desccs := "Ada yang bisa di bantu?"
+	hasil := InsertDataCS(MongoConn, Namacs, Emailcs, Nohpcs, Negaracs, Desccs)
 	fmt.Println(hasil)
 
 }
 
 func TestGetDataDataCS(t *testing.T) {
-	Nama := "Gilar"
-	hasil := GetDataCS(Nama, MongoConn, "data_DataCS")
+	Namacs := "Gilar"
+	hasil := GetDataCS(Namacs, MongoConn, "data_DataCS")
 	fmt.Println(hasil)
 
 }
 
 func TestDeleteData(t *testing.T) {
-	Negara := "Indonesia"
-	hasil := DeleteDataCS(Negara, MongoConn, "data_DataCS")
+	Negaracs := "Indonesia"
+	hasil := DeleteDataCS(Negaracs, MongoConn, "data_DataCS")
 	fmt.Println(hasil)
 
 }
