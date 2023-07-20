@@ -26,12 +26,12 @@ func InsertDataCS(db *mongo.Database, nama, email, nohp string, negara string, d
 	return InsertOneDoc(db, "data_DataCS", DataCS)
 }
 
-func GetDataCS(negara string, db *mongo.Database, col string) (data DataCS) {
+func GetDataNegara(negara string, db *mongo.Database, col string) (data DataCS) {
 	act := db.Collection(col)
 	filter := bson.M{"negara": negara}
 	err := act.FindOne(context.TODO(), filter).Decode(&data)
 	if err != nil {
-		fmt.Printf("getdataaccbyact: %v\n", err)
+		fmt.Printf("getdataanegara: %v\n", err)
 	}
 	return data
 }
@@ -40,11 +40,11 @@ func GetDataNama(nama string, db *mongo.Database, col string) (data DataCS) {
 	filter := bson.M{"nama": nama}
 	err := accou.FindOne(context.TODO(), filter).Decode(&data)
 	if err != nil {
-		fmt.Printf("getDataCS: %v\n", err)
+		fmt.Printf("getNama: %v\n", err)
 	}
 	return data
 }
-func DeleteDataCS(negara string, db *mongo.Database, col string) (data DataCS) {
+func DeleteDataNegara(negara string, db *mongo.Database, col string) (data DataCS) {
 	dct := db.Collection(col)
 	filter := bson.M{"negara": negara}
 	err, _ := dct.DeleteOne(context.TODO(), filter)
