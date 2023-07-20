@@ -16,17 +16,17 @@ func InsertOneDoc(db *mongo.Database, collection string, doc interface{}) (inser
 	return insertResult.InsertedID
 }
 
-func InsertDataDataCS(db *mongo.Database, nama, email, nohp string, negara string, desc string) (InsertedID interface{}) {
-	var dataDataCS DataCS
-	dataDataCS.Nama = nama
-	dataDataCS.Email = email
-	dataDataCS.Nohp = nohp
-	dataDataCS.Negara = negara
-	dataDataCS.Desc = desc
-	return InsertOneDoc(db, "data_DataCS", dataDataCS)
+func InsertDataCS(db *mongo.Database, nama, email, nohp string, negara string, desc string) (InsertedID interface{}) {
+	var DataCS DataCS
+	DataCS.Nama = nama
+	DataCS.Email = email
+	DataCS.Nohp = nohp
+	DataCS.Negara = negara
+	DataCS.Desc = desc
+	return InsertOneDoc(db, "data_DataCS", DataCS)
 }
 
-func GetDataDataCS(negara string, db *mongo.Database, col string) (data DataCS) {
+func GetDataCS(negara string, db *mongo.Database, col string) (data DataCS) {
 	act := db.Collection(col)
 	filter := bson.M{"negara": negara}
 	err := act.FindOne(context.TODO(), filter).Decode(&data)
@@ -40,16 +40,16 @@ func GetDataNama(nama string, db *mongo.Database, col string) (data DataCS) {
 	filter := bson.M{"nama": nama}
 	err := accou.FindOne(context.TODO(), filter).Decode(&data)
 	if err != nil {
-		fmt.Printf("getdataDataCS: %v\n", err)
+		fmt.Printf("getDataCS: %v\n", err)
 	}
 	return data
 }
-func DeleteDataDataCS(negara string, db *mongo.Database, col string) (data DataCS) {
+func DeleteDataCS(negara string, db *mongo.Database, col string) (data DataCS) {
 	dct := db.Collection(col)
 	filter := bson.M{"negara": negara}
 	err, _ := dct.DeleteOne(context.TODO(), filter)
 	if err != nil {
-		fmt.Printf("DeleteDataDataCS : %v\n", err)
+		fmt.Printf("DeleteDataCS : %v\n", err)
 	}
 	fmt.Println("Succes Delete data")
 	return data
