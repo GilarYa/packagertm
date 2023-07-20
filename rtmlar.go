@@ -44,6 +44,15 @@ func GetDataNama(nama string, db *mongo.Database, col string) (data DataCS) {
 	}
 	return data
 }
+func GetDataNegara(negara string, db *mongo.Database, col string) (data DataCS) {
+	agd := db.Collection(col)
+	filter := bson.M{"negara": negara}
+	err := agd.FindOne(context.TODO(), filter).Decode(&data)
+	if err != nil {
+		fmt.Printf("getdatanegara: %v\n", err)
+	}
+	return data
+}
 
 // func DeleteDataNegara(negara string, db *mongo.Database, col string) (data DataCS) {
 // 	dct := db.Collection(col)
@@ -62,6 +71,17 @@ func DeleteDataNama(nama string, db *mongo.Database, col string) (data DataCS) {
 	err, _ := dena.DeleteOne(context.TODO(), filter)
 	if err != nil {
 		fmt.Printf("DeleteDataNama : %v\n", err)
+	}
+	fmt.Println("Succes Delete data")
+	return data
+
+}
+func DeleteDataNegara(negara string, db *mongo.Database, col string) (data DataCS) {
+	dena := db.Collection(col)
+	filter := bson.M{"negara": negara}
+	err, _ := dena.DeleteOne(context.TODO(), filter)
+	if err != nil {
+		fmt.Printf("DeleteDatanegara : %v\n", err)
 	}
 	fmt.Println("Succes Delete data")
 	return data
