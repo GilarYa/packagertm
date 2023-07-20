@@ -1,4 +1,4 @@
-package rtmlar
+package packagertm
 
 import (
 	"fmt"
