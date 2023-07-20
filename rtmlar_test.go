@@ -12,7 +12,7 @@ var MongoString string = os.Getenv("MONGOSTRING")
 
 var MongoInfo = atdb.DBInfo{
 	DBString: MongoString,
-	DBName:   "CustomerService",
+	DBName:   "DataCS",
 }
 
 var MongoConn = atdb.MongoConnect(MongoInfo)
@@ -23,21 +23,21 @@ func TestInsertData(t *testing.T) {
 	Nohp := "085312345678"
 	Negara := "Indonesia"
 	Desc := "Ada yang bisa di bantu?"
-	hasil := InsertDataCustomerServices(MongoConn, Nama, Email, Nohp, Negara, Desc)
+	hasil := InsertDataDataCS(MongoConn, Nama, Email, Nohp, Negara, Desc)
 	fmt.Println(hasil)
 
 }
 
-func TestGetDataCustomerServices(t *testing.T) {
+func TestGetDataDataCS(t *testing.T) {
 	Nama := "Gilar"
-	hasil := GetDataCustomerServices(Nama, MongoConn, "data_CustomerServices")
+	hasil := GetDataDataCS(Nama, MongoConn, "data_DataCS")
 	fmt.Println(hasil)
 
 }
 
 func TestDeleteData(t *testing.T) {
 	Negara := "Indonesia"
-	hasil := DeleteDataCustomerServices(Negara, MongoConn, "data_CustomerServices")
+	hasil := DeleteDataDataCS(Negara, MongoConn, "data_DataCS")
 	fmt.Println(hasil)
 
 }
